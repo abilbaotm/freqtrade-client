@@ -5,8 +5,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./gen
+    defaults:
+      run:
+        working-directory: ./gen
     steps:
       - uses: actions/checkout@v2
       # Setup .npmrc file to publish to npm
@@ -15,8 +16,6 @@ jobs:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
-        working-directory: ${{ secrets.working-directory }}
       - run: npm publish
-        working-directory: ${{ secrets.working-directory }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
