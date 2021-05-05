@@ -12,21 +12,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
-      # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v1
-        with:
-          registry-url: 'https://npm.pkg.github.com'
-          node-version: '12.x'
-          scope: '@abilbaotm'
-      # Publish to GitHub Packages
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm publish
+      - run: npm publish dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
