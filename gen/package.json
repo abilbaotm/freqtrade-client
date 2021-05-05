@@ -1,7 +1,7 @@
 {
-  "name": "preqtrade-client",
+  "name": "freqtrade-client",
   "version": "0.1.0",
-  "description": "OpenAPI client for preqtrade-client",
+  "description": "OpenAPI client for freqtrade-client",
   "author": "OpenAPI-Generator Contributors",
   "keywords": [
     "openapi-client",
