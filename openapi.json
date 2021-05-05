@@ -1,0 +1,2885 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Freqtrade API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/ping": {
+      "get": {
+        "summary": "Ping",
+        "description": "simple ping",
+        "operationId": "ping_api_v1_ping_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ping"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/version": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Version",
+        "description": "Bot Version info",
+        "operationId": "version_api_v1_version_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Version"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/balance": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Balance",
+        "description": "Account Balances",
+        "operationId": "balance_api_v1_balance_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Balances"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/count": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Count",
+        "operationId": "count_api_v1_count_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Count"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/performance": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Performance",
+        "operationId": "performance_api_v1_performance_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Performance Api V1 Performance Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PerformanceEntry"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/profit": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Profit",
+        "operationId": "profit_api_v1_profit_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Profit"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/stats": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Stats",
+        "operationId": "stats_api_v1_stats_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Stats"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/daily": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Daily",
+        "operationId": "daily_api_v1_daily_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Timescale",
+              "type": "integer",
+              "default": 7
+            },
+            "name": "timescale",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Daily"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/status": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Status",
+        "operationId": "status_api_v1_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Status Api V1 Status Get",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OpenTradeSchema"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/trades": {
+      "get": {
+        "tags": [
+          "info",
+          "trading"
+        ],
+        "summary": "Trades",
+        "operationId": "trades_api_v1_trades_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "type": "integer",
+              "default": 500
+            },
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Offset",
+              "type": "integer",
+              "default": 0
+            },
+            "name": "offset",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/trade/{tradeid}": {
+      "get": {
+        "tags": [
+          "info",
+          "trading"
+        ],
+        "summary": "Trade",
+        "operationId": "trade_api_v1_trade__tradeid__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Tradeid",
+              "type": "integer"
+            },
+            "name": "tradeid",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OpenTradeSchema"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/trades/{tradeid}": {
+      "delete": {
+        "tags": [
+          "info",
+          "trading"
+        ],
+        "summary": "Trades Delete",
+        "operationId": "trades_delete_api_v1_trades__tradeid__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Tradeid",
+              "type": "integer"
+            },
+            "name": "tradeid",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteTrade"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/edge": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Edge",
+        "operationId": "edge_api_v1_edge_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/show_config": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Show Config",
+        "operationId": "show_config_api_v1_show_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShowConfig"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/forcebuy": {
+      "post": {
+        "tags": [
+          "trading"
+        ],
+        "summary": "Forcebuy",
+        "operationId": "forcebuy_api_v1_forcebuy_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForceBuyPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForceBuyResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/forcesell": {
+      "post": {
+        "tags": [
+          "trading"
+        ],
+        "summary": "Forcesell",
+        "operationId": "forcesell_api_v1_forcesell_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ForceSellPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultMsg"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/blacklist": {
+      "get": {
+        "tags": [
+          "info",
+          "pairlist"
+        ],
+        "summary": "Blacklist",
+        "operationId": "blacklist_api_v1_blacklist_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlacklistResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "info",
+          "pairlist"
+        ],
+        "summary": "Blacklist Post",
+        "operationId": "blacklist_post_api_v1_blacklist_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlacklistPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlacklistResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/whitelist": {
+      "get": {
+        "tags": [
+          "info",
+          "pairlist"
+        ],
+        "summary": "Whitelist",
+        "operationId": "whitelist_api_v1_whitelist_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WhitelistResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/locks": {
+      "get": {
+        "tags": [
+          "info",
+          "locks"
+        ],
+        "summary": "Locks",
+        "operationId": "locks_api_v1_locks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Locks"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/locks/{lockid}": {
+      "delete": {
+        "tags": [
+          "info",
+          "locks"
+        ],
+        "summary": "Delete Lock",
+        "operationId": "delete_lock_api_v1_locks__lockid__delete",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Lockid",
+              "type": "integer"
+            },
+            "name": "lockid",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Locks"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/locks/delete": {
+      "post": {
+        "tags": [
+          "info",
+          "locks"
+        ],
+        "summary": "Delete Lock Pair",
+        "operationId": "delete_lock_pair_api_v1_locks_delete_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteLockRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Locks"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/logs": {
+      "get": {
+        "tags": [
+          "info"
+        ],
+        "summary": "Logs",
+        "operationId": "logs_api_v1_logs_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Logs"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/start": {
+      "post": {
+        "tags": [
+          "botcontrol"
+        ],
+        "summary": "Start",
+        "operationId": "start_api_v1_start_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusMsg"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/stop": {
+      "post": {
+        "tags": [
+          "botcontrol"
+        ],
+        "summary": "Stop",
+        "operationId": "stop_api_v1_stop_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusMsg"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/stopbuy": {
+      "post": {
+        "tags": [
+          "botcontrol"
+        ],
+        "summary": "Stop Buy",
+        "operationId": "stop_buy_api_v1_stopbuy_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusMsg"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/reload_config": {
+      "post": {
+        "tags": [
+          "botcontrol"
+        ],
+        "summary": "Reload Config",
+        "operationId": "reload_config_api_v1_reload_config_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusMsg"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/pair_candles": {
+      "get": {
+        "tags": [
+          "candle data"
+        ],
+        "summary": "Pair Candles",
+        "operationId": "pair_candles_api_v1_pair_candles_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Pair",
+              "type": "string"
+            },
+            "name": "pair",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Timeframe",
+              "type": "string"
+            },
+            "name": "timeframe",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Limit",
+              "type": "integer"
+            },
+            "name": "limit",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PairHistory"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/pair_history": {
+      "get": {
+        "tags": [
+          "candle data"
+        ],
+        "summary": "Pair History",
+        "operationId": "pair_history_api_v1_pair_history_get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Pair",
+              "type": "string"
+            },
+            "name": "pair",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Timeframe",
+              "type": "string"
+            },
+            "name": "timeframe",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Timerange",
+              "type": "string"
+            },
+            "name": "timerange",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Strategy",
+              "type": "string"
+            },
+            "name": "strategy",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PairHistory"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/plot_config": {
+      "get": {
+        "tags": [
+          "candle data"
+        ],
+        "summary": "Plot Config",
+        "operationId": "plot_config_api_v1_plot_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlotConfig"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/strategies": {
+      "get": {
+        "tags": [
+          "strategy"
+        ],
+        "summary": "List Strategies",
+        "operationId": "list_strategies_api_v1_strategies_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StrategyListResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/strategy/{strategy}": {
+      "get": {
+        "tags": [
+          "strategy"
+        ],
+        "summary": "Get Strategy",
+        "operationId": "get_strategy_api_v1_strategy__strategy__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Strategy",
+              "type": "string"
+            },
+            "name": "strategy",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StrategyResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/available_pairs": {
+      "get": {
+        "tags": [
+          "candle data"
+        ],
+        "summary": "List Available Pairs",
+        "operationId": "list_available_pairs_api_v1_available_pairs_get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Timeframe",
+              "type": "string"
+            },
+            "name": "timeframe",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "Stake Currency",
+              "type": "string"
+            },
+            "name": "stake_currency",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailablePairs"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          },
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/token/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Token Login",
+        "operationId": "token_login_api_v1_token_login_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessAndRefreshToken"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBasic": []
+          }
+        ]
+      }
+    },
+    "/api/v1/token/refresh": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Token Refresh",
+        "operationId": "token_refresh_api_v1_token_refresh_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessToken"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccessAndRefreshToken": {
+        "title": "AccessAndRefreshToken",
+        "required": [
+          "access_token",
+          "refresh_token"
+        ],
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          },
+          "refresh_token": {
+            "title": "Refresh Token",
+            "type": "string"
+          }
+        }
+      },
+      "AccessToken": {
+        "title": "AccessToken",
+        "required": [
+          "access_token"
+        ],
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "title": "Access Token",
+            "type": "string"
+          }
+        }
+      },
+      "AvailablePairs": {
+        "title": "AvailablePairs",
+        "required": [
+          "length",
+          "pairs",
+          "pair_interval"
+        ],
+        "type": "object",
+        "properties": {
+          "length": {
+            "title": "Length",
+            "type": "integer"
+          },
+          "pairs": {
+            "title": "Pairs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pair_interval": {
+            "title": "Pair Interval",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Balance": {
+        "title": "Balance",
+        "required": [
+          "currency",
+          "free",
+          "balance",
+          "used",
+          "est_stake",
+          "stake"
+        ],
+        "type": "object",
+        "properties": {
+          "currency": {
+            "title": "Currency",
+            "type": "string"
+          },
+          "free": {
+            "title": "Free",
+            "type": "number"
+          },
+          "balance": {
+            "title": "Balance",
+            "type": "number"
+          },
+          "used": {
+            "title": "Used",
+            "type": "number"
+          },
+          "est_stake": {
+            "title": "Est Stake",
+            "type": "number"
+          },
+          "stake": {
+            "title": "Stake",
+            "type": "string"
+          }
+        }
+      },
+      "Balances": {
+        "title": "Balances",
+        "required": [
+          "currencies",
+          "total",
+          "symbol",
+          "value",
+          "stake",
+          "note"
+        ],
+        "type": "object",
+        "properties": {
+          "currencies": {
+            "title": "Currencies",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Balance"
+            }
+          },
+          "total": {
+            "title": "Total",
+            "type": "number"
+          },
+          "symbol": {
+            "title": "Symbol",
+            "type": "string"
+          },
+          "value": {
+            "title": "Value",
+            "type": "number"
+          },
+          "stake": {
+            "title": "Stake",
+            "type": "string"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          }
+        }
+      },
+      "BlacklistPayload": {
+        "title": "BlacklistPayload",
+        "required": [
+          "blacklist"
+        ],
+        "type": "object",
+        "properties": {
+          "blacklist": {
+            "title": "Blacklist",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "BlacklistResponse": {
+        "title": "BlacklistResponse",
+        "required": [
+          "blacklist",
+          "blacklist_expanded",
+          "errors",
+          "length",
+          "method"
+        ],
+        "type": "object",
+        "properties": {
+          "blacklist": {
+            "title": "Blacklist",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "blacklist_expanded": {
+            "title": "Blacklist Expanded",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "errors": {
+            "title": "Errors",
+            "type": "object"
+          },
+          "length": {
+            "title": "Length",
+            "type": "integer"
+          },
+          "method": {
+            "title": "Method",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Count": {
+        "title": "Count",
+        "required": [
+          "current",
+          "max",
+          "total_stake"
+        ],
+        "type": "object",
+        "properties": {
+          "current": {
+            "title": "Current",
+            "type": "integer"
+          },
+          "max": {
+            "title": "Max",
+            "type": "integer"
+          },
+          "total_stake": {
+            "title": "Total Stake",
+            "type": "number"
+          }
+        }
+      },
+      "Daily": {
+        "title": "Daily",
+        "required": [
+          "data",
+          "fiat_display_currency",
+          "stake_currency"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DailyRecord"
+            }
+          },
+          "fiat_display_currency": {
+            "title": "Fiat Display Currency",
+            "type": "string"
+          },
+          "stake_currency": {
+            "title": "Stake Currency",
+            "type": "string"
+          }
+        }
+      },
+      "DailyRecord": {
+        "title": "DailyRecord",
+        "required": [
+          "date",
+          "abs_profit",
+          "fiat_value",
+          "trade_count"
+        ],
+        "type": "object",
+        "properties": {
+          "date": {
+            "title": "Date",
+            "type": "string",
+            "format": "date"
+          },
+          "abs_profit": {
+            "title": "Abs Profit",
+            "type": "number"
+          },
+          "fiat_value": {
+            "title": "Fiat Value",
+            "type": "number"
+          },
+          "trade_count": {
+            "title": "Trade Count",
+            "type": "integer"
+          }
+        }
+      },
+      "DeleteLockRequest": {
+        "title": "DeleteLockRequest",
+        "type": "object",
+        "properties": {
+          "pair": {
+            "title": "Pair",
+            "type": "string"
+          },
+          "lockid": {
+            "title": "Lockid",
+            "type": "integer"
+          }
+        }
+      },
+      "DeleteTrade": {
+        "title": "DeleteTrade",
+        "required": [
+          "cancel_order_count",
+          "result",
+          "result_msg",
+          "trade_id"
+        ],
+        "type": "object",
+        "properties": {
+          "cancel_order_count": {
+            "title": "Cancel Order Count",
+            "type": "integer"
+          },
+          "result": {
+            "title": "Result",
+            "type": "string"
+          },
+          "result_msg": {
+            "title": "Result Msg",
+            "type": "string"
+          },
+          "trade_id": {
+            "title": "Trade Id",
+            "type": "integer"
+          }
+        }
+      },
+      "ForceBuyPayload": {
+        "title": "ForceBuyPayload",
+        "required": [
+          "pair"
+        ],
+        "type": "object",
+        "properties": {
+          "pair": {
+            "title": "Pair",
+            "type": "string"
+          },
+          "price": {
+            "title": "Price",
+            "type": "number"
+          }
+        }
+      },
+      "ForceBuyResponse": {
+        "title": "ForceBuyResponse",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/TradeSchema"
+          },
+          {
+            "$ref": "#/components/schemas/StatusMsg"
+          }
+        ]
+      },
+      "ForceSellPayload": {
+        "title": "ForceSellPayload",
+        "required": [
+          "tradeid"
+        ],
+        "type": "object",
+        "properties": {
+          "tradeid": {
+            "title": "Tradeid",
+            "type": "string"
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "LockModel": {
+        "title": "LockModel",
+        "required": [
+          "id",
+          "active",
+          "lock_end_time",
+          "lock_end_timestamp",
+          "lock_time",
+          "lock_timestamp",
+          "pair",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "active": {
+            "title": "Active",
+            "type": "boolean"
+          },
+          "lock_end_time": {
+            "title": "Lock End Time",
+            "type": "string"
+          },
+          "lock_end_timestamp": {
+            "title": "Lock End Timestamp",
+            "type": "integer"
+          },
+          "lock_time": {
+            "title": "Lock Time",
+            "type": "string"
+          },
+          "lock_timestamp": {
+            "title": "Lock Timestamp",
+            "type": "integer"
+          },
+          "pair": {
+            "title": "Pair",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        }
+      },
+      "Locks": {
+        "title": "Locks",
+        "required": [
+          "lock_count",
+          "locks"
+        ],
+        "type": "object",
+        "properties": {
+          "lock_count": {
+            "title": "Lock Count",
+            "type": "integer"
+          },
+          "locks": {
+            "title": "Locks",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LockModel"
+            }
+          }
+        }
+      },
+      "Logs": {
+        "title": "Logs",
+        "required": [
+          "log_count",
+          "logs"
+        ],
+        "type": "object",
+        "properties": {
+          "log_count": {
+            "title": "Log Count",
+            "type": "integer"
+          },
+          "logs": {
+            "title": "Logs",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {}
+            }
+          }
+        }
+      },
+      "OpenTradeSchema": {
+        "title": "OpenTradeSchema",
+        "required": [
+          "trade_id",
+          "pair",
+          "is_open",
+          "exchange",
+          "amount",
+          "amount_requested",
+          "stake_amount",
+          "strategy",
+          "timeframe",
+          "open_date",
+          "open_timestamp",
+          "open_rate",
+          "open_trade_value",
+          "current_profit",
+          "current_profit_abs",
+          "current_profit_pct",
+          "current_rate"
+        ],
+        "type": "object",
+        "properties": {
+          "trade_id": {
+            "title": "Trade Id",
+            "type": "integer"
+          },
+          "pair": {
+            "title": "Pair",
+            "type": "string"
+          },
+          "is_open": {
+            "title": "Is Open",
+            "type": "boolean"
+          },
+          "exchange": {
+            "title": "Exchange",
+            "type": "string"
+          },
+          "amount": {
+            "title": "Amount",
+            "type": "number"
+          },
+          "amount_requested": {
+            "title": "Amount Requested",
+            "type": "number"
+          },
+          "stake_amount": {
+            "title": "Stake Amount",
+            "type": "number"
+          },
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          },
+          "timeframe": {
+            "title": "Timeframe",
+            "type": "integer"
+          },
+          "fee_open": {
+            "title": "Fee Open",
+            "type": "number"
+          },
+          "fee_open_cost": {
+            "title": "Fee Open Cost",
+            "type": "number"
+          },
+          "fee_open_currency": {
+            "title": "Fee Open Currency",
+            "type": "string"
+          },
+          "fee_close": {
+            "title": "Fee Close",
+            "type": "number"
+          },
+          "fee_close_cost": {
+            "title": "Fee Close Cost",
+            "type": "number"
+          },
+          "fee_close_currency": {
+            "title": "Fee Close Currency",
+            "type": "string"
+          },
+          "open_date": {
+            "title": "Open Date",
+            "type": "string"
+          },
+          "open_timestamp": {
+            "title": "Open Timestamp",
+            "type": "integer"
+          },
+          "open_rate": {
+            "title": "Open Rate",
+            "type": "number"
+          },
+          "open_rate_requested": {
+            "title": "Open Rate Requested",
+            "type": "number"
+          },
+          "open_trade_value": {
+            "title": "Open Trade Value",
+            "type": "number"
+          },
+          "close_date": {
+            "title": "Close Date",
+            "type": "string"
+          },
+          "close_timestamp": {
+            "title": "Close Timestamp",
+            "type": "integer"
+          },
+          "close_rate": {
+            "title": "Close Rate",
+            "type": "number"
+          },
+          "close_rate_requested": {
+            "title": "Close Rate Requested",
+            "type": "number"
+          },
+          "close_profit": {
+            "title": "Close Profit",
+            "type": "number"
+          },
+          "close_profit_pct": {
+            "title": "Close Profit Pct",
+            "type": "number"
+          },
+          "close_profit_abs": {
+            "title": "Close Profit Abs",
+            "type": "number"
+          },
+          "profit_ratio": {
+            "title": "Profit Ratio",
+            "type": "number"
+          },
+          "profit_pct": {
+            "title": "Profit Pct",
+            "type": "number"
+          },
+          "profit_abs": {
+            "title": "Profit Abs",
+            "type": "number"
+          },
+          "profit_fiat": {
+            "title": "Profit Fiat",
+            "type": "number"
+          },
+          "sell_reason": {
+            "title": "Sell Reason",
+            "type": "string"
+          },
+          "sell_order_status": {
+            "title": "Sell Order Status",
+            "type": "string"
+          },
+          "stop_loss_abs": {
+            "title": "Stop Loss Abs",
+            "type": "number"
+          },
+          "stop_loss_ratio": {
+            "title": "Stop Loss Ratio",
+            "type": "number"
+          },
+          "stop_loss_pct": {
+            "title": "Stop Loss Pct",
+            "type": "number"
+          },
+          "stoploss_order_id": {
+            "title": "Stoploss Order Id",
+            "type": "string"
+          },
+          "stoploss_last_update": {
+            "title": "Stoploss Last Update",
+            "type": "string"
+          },
+          "stoploss_last_update_timestamp": {
+            "title": "Stoploss Last Update Timestamp",
+            "type": "integer"
+          },
+          "initial_stop_loss_abs": {
+            "title": "Initial Stop Loss Abs",
+            "type": "number"
+          },
+          "initial_stop_loss_ratio": {
+            "title": "Initial Stop Loss Ratio",
+            "type": "number"
+          },
+          "initial_stop_loss_pct": {
+            "title": "Initial Stop Loss Pct",
+            "type": "number"
+          },
+          "min_rate": {
+            "title": "Min Rate",
+            "type": "number"
+          },
+          "max_rate": {
+            "title": "Max Rate",
+            "type": "number"
+          },
+          "open_order_id": {
+            "title": "Open Order Id",
+            "type": "string"
+          },
+          "stoploss_current_dist": {
+            "title": "Stoploss Current Dist",
+            "type": "number"
+          },
+          "stoploss_current_dist_pct": {
+            "title": "Stoploss Current Dist Pct",
+            "type": "number"
+          },
+          "stoploss_current_dist_ratio": {
+            "title": "Stoploss Current Dist Ratio",
+            "type": "number"
+          },
+          "stoploss_entry_dist": {
+            "title": "Stoploss Entry Dist",
+            "type": "number"
+          },
+          "stoploss_entry_dist_ratio": {
+            "title": "Stoploss Entry Dist Ratio",
+            "type": "number"
+          },
+          "current_profit": {
+            "title": "Current Profit",
+            "type": "number"
+          },
+          "current_profit_abs": {
+            "title": "Current Profit Abs",
+            "type": "number"
+          },
+          "current_profit_pct": {
+            "title": "Current Profit Pct",
+            "type": "number"
+          },
+          "current_rate": {
+            "title": "Current Rate",
+            "type": "number"
+          },
+          "open_order": {
+            "title": "Open Order",
+            "type": "string"
+          }
+        }
+      },
+      "PairHistory": {
+        "title": "PairHistory",
+        "required": [
+          "strategy",
+          "pair",
+          "timeframe",
+          "timeframe_ms",
+          "columns",
+          "data",
+          "length",
+          "buy_signals",
+          "sell_signals",
+          "last_analyzed",
+          "last_analyzed_ts",
+          "data_start_ts",
+          "data_start",
+          "data_stop",
+          "data_stop_ts"
+        ],
+        "type": "object",
+        "properties": {
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          },
+          "pair": {
+            "title": "Pair",
+            "type": "string"
+          },
+          "timeframe": {
+            "title": "Timeframe",
+            "type": "string"
+          },
+          "timeframe_ms": {
+            "title": "Timeframe Ms",
+            "type": "integer"
+          },
+          "columns": {
+            "title": "Columns",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "data": {
+            "title": "Data",
+            "type": "array",
+            "items": {}
+          },
+          "length": {
+            "title": "Length",
+            "type": "integer"
+          },
+          "buy_signals": {
+            "title": "Buy Signals",
+            "type": "integer"
+          },
+          "sell_signals": {
+            "title": "Sell Signals",
+            "type": "integer"
+          },
+          "last_analyzed": {
+            "title": "Last Analyzed",
+            "type": "string",
+            "format": "date-time"
+          },
+          "last_analyzed_ts": {
+            "title": "Last Analyzed Ts",
+            "type": "integer"
+          },
+          "data_start_ts": {
+            "title": "Data Start Ts",
+            "type": "integer"
+          },
+          "data_start": {
+            "title": "Data Start",
+            "type": "string"
+          },
+          "data_stop": {
+            "title": "Data Stop",
+            "type": "string"
+          },
+          "data_stop_ts": {
+            "title": "Data Stop Ts",
+            "type": "integer"
+          }
+        }
+      },
+      "PerformanceEntry": {
+        "title": "PerformanceEntry",
+        "required": [
+          "pair",
+          "profit",
+          "count"
+        ],
+        "type": "object",
+        "properties": {
+          "pair": {
+            "title": "Pair",
+            "type": "string"
+          },
+          "profit": {
+            "title": "Profit",
+            "type": "number"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          }
+        }
+      },
+      "Ping": {
+        "title": "Ping",
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        }
+      },
+      "PlotConfig": {
+        "title": "PlotConfig",
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/PlotConfig_"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "PlotConfig_": {
+        "title": "PlotConfig_",
+        "required": [
+          "main_plot"
+        ],
+        "type": "object",
+        "properties": {
+          "main_plot": {
+            "title": "Main Plot",
+            "type": "object"
+          },
+          "subplots": {
+            "title": "Subplots",
+            "type": "object"
+          }
+        }
+      },
+      "Profit": {
+        "title": "Profit",
+        "required": [
+          "profit_closed_coin",
+          "profit_closed_percent_mean",
+          "profit_closed_ratio_mean",
+          "profit_closed_percent_sum",
+          "profit_closed_ratio_sum",
+          "profit_closed_fiat",
+          "profit_all_coin",
+          "profit_all_percent_mean",
+          "profit_all_ratio_mean",
+          "profit_all_percent_sum",
+          "profit_all_ratio_sum",
+          "profit_all_fiat",
+          "trade_count",
+          "closed_trade_count",
+          "first_trade_date",
+          "first_trade_timestamp",
+          "latest_trade_date",
+          "latest_trade_timestamp",
+          "avg_duration",
+          "best_pair",
+          "best_rate",
+          "winning_trades",
+          "losing_trades"
+        ],
+        "type": "object",
+        "properties": {
+          "profit_closed_coin": {
+            "title": "Profit Closed Coin",
+            "type": "number"
+          },
+          "profit_closed_percent_mean": {
+            "title": "Profit Closed Percent Mean",
+            "type": "number"
+          },
+          "profit_closed_ratio_mean": {
+            "title": "Profit Closed Ratio Mean",
+            "type": "number"
+          },
+          "profit_closed_percent_sum": {
+            "title": "Profit Closed Percent Sum",
+            "type": "number"
+          },
+          "profit_closed_ratio_sum": {
+            "title": "Profit Closed Ratio Sum",
+            "type": "number"
+          },
+          "profit_closed_fiat": {
+            "title": "Profit Closed Fiat",
+            "type": "number"
+          },
+          "profit_all_coin": {
+            "title": "Profit All Coin",
+            "type": "number"
+          },
+          "profit_all_percent_mean": {
+            "title": "Profit All Percent Mean",
+            "type": "number"
+          },
+          "profit_all_ratio_mean": {
+            "title": "Profit All Ratio Mean",
+            "type": "number"
+          },
+          "profit_all_percent_sum": {
+            "title": "Profit All Percent Sum",
+            "type": "number"
+          },
+          "profit_all_ratio_sum": {
+            "title": "Profit All Ratio Sum",
+            "type": "number"
+          },
+          "profit_all_fiat": {
+            "title": "Profit All Fiat",
+            "type": "number"
+          },
+          "trade_count": {
+            "title": "Trade Count",
+            "type": "integer"
+          },
+          "closed_trade_count": {
+            "title": "Closed Trade Count",
+            "type": "integer"
+          },
+          "first_trade_date": {
+            "title": "First Trade Date",
+            "type": "string"
+          },
+          "first_trade_timestamp": {
+            "title": "First Trade Timestamp",
+            "type": "integer"
+          },
+          "latest_trade_date": {
+            "title": "Latest Trade Date",
+            "type": "string"
+          },
+          "latest_trade_timestamp": {
+            "title": "Latest Trade Timestamp",
+            "type": "integer"
+          },
+          "avg_duration": {
+            "title": "Avg Duration",
+            "type": "string"
+          },
+          "best_pair": {
+            "title": "Best Pair",
+            "type": "string"
+          },
+          "best_rate": {
+            "title": "Best Rate",
+            "type": "number"
+          },
+          "winning_trades": {
+            "title": "Winning Trades",
+            "type": "integer"
+          },
+          "losing_trades": {
+            "title": "Losing Trades",
+            "type": "integer"
+          }
+        }
+      },
+      "ResultMsg": {
+        "title": "ResultMsg",
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        }
+      },
+      "SellReason": {
+        "title": "SellReason",
+        "required": [
+          "wins",
+          "losses",
+          "draws"
+        ],
+        "type": "object",
+        "properties": {
+          "wins": {
+            "title": "Wins",
+            "type": "integer"
+          },
+          "losses": {
+            "title": "Losses",
+            "type": "integer"
+          },
+          "draws": {
+            "title": "Draws",
+            "type": "integer"
+          }
+        }
+      },
+      "ShowConfig": {
+        "title": "ShowConfig",
+        "required": [
+          "dry_run",
+          "stake_currency",
+          "stake_amount",
+          "max_open_trades",
+          "minimal_roi",
+          "stoploss",
+          "trailing_stop",
+          "timeframe",
+          "timeframe_ms",
+          "timeframe_min",
+          "exchange",
+          "strategy",
+          "forcebuy_enabled",
+          "ask_strategy",
+          "bid_strategy",
+          "bot_name",
+          "state",
+          "runmode"
+        ],
+        "type": "object",
+        "properties": {
+          "dry_run": {
+            "title": "Dry Run",
+            "type": "boolean"
+          },
+          "stake_currency": {
+            "title": "Stake Currency",
+            "type": "string"
+          },
+          "stake_amount": {
+            "title": "Stake Amount",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "max_open_trades": {
+            "title": "Max Open Trades",
+            "type": "integer"
+          },
+          "minimal_roi": {
+            "title": "Minimal Roi",
+            "type": "object"
+          },
+          "stoploss": {
+            "title": "Stoploss",
+            "type": "number"
+          },
+          "trailing_stop": {
+            "title": "Trailing Stop",
+            "type": "boolean"
+          },
+          "trailing_stop_positive": {
+            "title": "Trailing Stop Positive",
+            "type": "number"
+          },
+          "trailing_stop_positive_offset": {
+            "title": "Trailing Stop Positive Offset",
+            "type": "number"
+          },
+          "trailing_only_offset_is_reached": {
+            "title": "Trailing Only Offset Is Reached",
+            "type": "boolean"
+          },
+          "use_custom_stoploss": {
+            "title": "Use Custom Stoploss",
+            "type": "boolean"
+          },
+          "timeframe": {
+            "title": "Timeframe",
+            "type": "string"
+          },
+          "timeframe_ms": {
+            "title": "Timeframe Ms",
+            "type": "integer"
+          },
+          "timeframe_min": {
+            "title": "Timeframe Min",
+            "type": "integer"
+          },
+          "exchange": {
+            "title": "Exchange",
+            "type": "string"
+          },
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          },
+          "forcebuy_enabled": {
+            "title": "Forcebuy Enabled",
+            "type": "boolean"
+          },
+          "ask_strategy": {
+            "title": "Ask Strategy",
+            "type": "object"
+          },
+          "bid_strategy": {
+            "title": "Bid Strategy",
+            "type": "object"
+          },
+          "bot_name": {
+            "title": "Bot Name",
+            "type": "string"
+          },
+          "state": {
+            "title": "State",
+            "type": "string"
+          },
+          "runmode": {
+            "title": "Runmode",
+            "type": "string"
+          }
+        }
+      },
+      "Stats": {
+        "title": "Stats",
+        "required": [
+          "sell_reasons",
+          "durations"
+        ],
+        "type": "object",
+        "properties": {
+          "sell_reasons": {
+            "title": "Sell Reasons",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/SellReason"
+            }
+          },
+          "durations": {
+            "title": "Durations",
+            "type": "object",
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "StatusMsg": {
+        "title": "StatusMsg",
+        "required": [
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        }
+      },
+      "StrategyListResponse": {
+        "title": "StrategyListResponse",
+        "required": [
+          "strategies"
+        ],
+        "type": "object",
+        "properties": {
+          "strategies": {
+            "title": "Strategies",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "StrategyResponse": {
+        "title": "StrategyResponse",
+        "required": [
+          "strategy",
+          "code"
+        ],
+        "type": "object",
+        "properties": {
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          },
+          "code": {
+            "title": "Code",
+            "type": "string"
+          }
+        }
+      },
+      "TradeSchema": {
+        "title": "TradeSchema",
+        "required": [
+          "trade_id",
+          "pair",
+          "is_open",
+          "exchange",
+          "amount",
+          "amount_requested",
+          "stake_amount",
+          "strategy",
+          "timeframe",
+          "open_date",
+          "open_timestamp",
+          "open_rate",
+          "open_trade_value"
+        ],
+        "type": "object",
+        "properties": {
+          "trade_id": {
+            "title": "Trade Id",
+            "type": "integer"
+          },
+          "pair": {
+            "title": "Pair",
+            "type": "string"
+          },
+          "is_open": {
+            "title": "Is Open",
+            "type": "boolean"
+          },
+          "exchange": {
+            "title": "Exchange",
+            "type": "string"
+          },
+          "amount": {
+            "title": "Amount",
+            "type": "number"
+          },
+          "amount_requested": {
+            "title": "Amount Requested",
+            "type": "number"
+          },
+          "stake_amount": {
+            "title": "Stake Amount",
+            "type": "number"
+          },
+          "strategy": {
+            "title": "Strategy",
+            "type": "string"
+          },
+          "timeframe": {
+            "title": "Timeframe",
+            "type": "integer"
+          },
+          "fee_open": {
+            "title": "Fee Open",
+            "type": "number"
+          },
+          "fee_open_cost": {
+            "title": "Fee Open Cost",
+            "type": "number"
+          },
+          "fee_open_currency": {
+            "title": "Fee Open Currency",
+            "type": "string"
+          },
+          "fee_close": {
+            "title": "Fee Close",
+            "type": "number"
+          },
+          "fee_close_cost": {
+            "title": "Fee Close Cost",
+            "type": "number"
+          },
+          "fee_close_currency": {
+            "title": "Fee Close Currency",
+            "type": "string"
+          },
+          "open_date": {
+            "title": "Open Date",
+            "type": "string"
+          },
+          "open_timestamp": {
+            "title": "Open Timestamp",
+            "type": "integer"
+          },
+          "open_rate": {
+            "title": "Open Rate",
+            "type": "number"
+          },
+          "open_rate_requested": {
+            "title": "Open Rate Requested",
+            "type": "number"
+          },
+          "open_trade_value": {
+            "title": "Open Trade Value",
+            "type": "number"
+          },
+          "close_date": {
+            "title": "Close Date",
+            "type": "string"
+          },
+          "close_timestamp": {
+            "title": "Close Timestamp",
+            "type": "integer"
+          },
+          "close_rate": {
+            "title": "Close Rate",
+            "type": "number"
+          },
+          "close_rate_requested": {
+            "title": "Close Rate Requested",
+            "type": "number"
+          },
+          "close_profit": {
+            "title": "Close Profit",
+            "type": "number"
+          },
+          "close_profit_pct": {
+            "title": "Close Profit Pct",
+            "type": "number"
+          },
+          "close_profit_abs": {
+            "title": "Close Profit Abs",
+            "type": "number"
+          },
+          "profit_ratio": {
+            "title": "Profit Ratio",
+            "type": "number"
+          },
+          "profit_pct": {
+            "title": "Profit Pct",
+            "type": "number"
+          },
+          "profit_abs": {
+            "title": "Profit Abs",
+            "type": "number"
+          },
+          "profit_fiat": {
+            "title": "Profit Fiat",
+            "type": "number"
+          },
+          "sell_reason": {
+            "title": "Sell Reason",
+            "type": "string"
+          },
+          "sell_order_status": {
+            "title": "Sell Order Status",
+            "type": "string"
+          },
+          "stop_loss_abs": {
+            "title": "Stop Loss Abs",
+            "type": "number"
+          },
+          "stop_loss_ratio": {
+            "title": "Stop Loss Ratio",
+            "type": "number"
+          },
+          "stop_loss_pct": {
+            "title": "Stop Loss Pct",
+            "type": "number"
+          },
+          "stoploss_order_id": {
+            "title": "Stoploss Order Id",
+            "type": "string"
+          },
+          "stoploss_last_update": {
+            "title": "Stoploss Last Update",
+            "type": "string"
+          },
+          "stoploss_last_update_timestamp": {
+            "title": "Stoploss Last Update Timestamp",
+            "type": "integer"
+          },
+          "initial_stop_loss_abs": {
+            "title": "Initial Stop Loss Abs",
+            "type": "number"
+          },
+          "initial_stop_loss_ratio": {
+            "title": "Initial Stop Loss Ratio",
+            "type": "number"
+          },
+          "initial_stop_loss_pct": {
+            "title": "Initial Stop Loss Pct",
+            "type": "number"
+          },
+          "min_rate": {
+            "title": "Min Rate",
+            "type": "number"
+          },
+          "max_rate": {
+            "title": "Max Rate",
+            "type": "number"
+          },
+          "open_order_id": {
+            "title": "Open Order Id",
+            "type": "string"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      },
+      "Version": {
+        "title": "Version",
+        "required": [
+          "version"
+        ],
+        "type": "object",
+        "properties": {
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        }
+      },
+      "WhitelistResponse": {
+        "title": "WhitelistResponse",
+        "required": [
+          "whitelist",
+          "length",
+          "method"
+        ],
+        "type": "object",
+        "properties": {
+          "whitelist": {
+            "title": "Whitelist",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "length": {
+            "title": "Length",
+            "type": "integer"
+          },
+          "method": {
+            "title": "Method",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "HTTPBasic": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "OAuth2PasswordBearer": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "scopes": {},
+            "tokenUrl": "token"
+          }
+        }
+      }
+    }
+  }
+}
