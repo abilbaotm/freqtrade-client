@@ -10,6 +10,8 @@ jobs:
         working-directory: ./gen
     steps:
       - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v1
         with:
@@ -25,8 +27,6 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm install
-      - run: npm run build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
