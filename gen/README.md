@@ -1,4 +1,4 @@
-## freqtrade-client@0.1.0
+## freqtrade-client@0.1.0r1
 
 ### Building
 
@@ -19,7 +19,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```
-npm install freqtrade-client@0.1.0 --save
+npm install freqtrade-client@0.1.0r1 --save
 ```
 
 _without publishing (not recommended):_
